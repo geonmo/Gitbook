@@ -41,44 +41,40 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
     Rscript package_install.R
     ```
 5. 패키지 설치를 홈디렉토리로 지정을 하였다면 모든 WN에서 접근이 가능합니다. 해당 Singularity 실행환경을 위해 아래와 같이 condor 제출파일과 bash 스크립트 파일을 작성합니다.
-
-{% code title="submit_singularity.jdl" %}
-```
-JobBatchName = BioCondctor_Package_Installation_Test_$(Cluster)
-executable = singularity_test.sh
-universe = vanilla
-requirements = ( HasSingularity == true )
-getenv = True
-should_transfer_files = YES
-when_to_transfer_output = ON_EXIT
-log = $(JobBatchName).log
-error = job_$(Process).stderr
-output = job_$(Process).stdout
-
-transfer_input_files = singularity_test.sh, tmao.set.R
-request_cpus= 1
-request_memory= 3G
-request_disk = 1G
-accounting_group=group_genome.bio
-## 다운로드된 이미지의 절대결로를 넣어주세요.
-+SingularityImage = "<절대경로>/bioconductor_docker_RELEASE_3_15.sif"
-+SingularityBind = "/cvmfs, /cms, /bio, /epig, /share"
-#notification = Error
-#notify_user =
-
-queue 1
-```
-{% endcode %}
-
-{% code title="singularity_test.sh" %}
-```bash
-#!/bin/bash
-/usr/local/bin/Rscript tmao.set.R
-```
-{% endcode %}
-
-1.  HTCondor로 작업을 제출한 후 기다려봅니다.
-
+    {% code title="submit_singularity.jdl" %}
+    ```
+    JobBatchName = BioCondctor_Package_Installation_Test_$(Cluster)
+    executable = singularity_test.sh
+    universe = vanilla
+    requirements = ( HasSingularity == true )
+    getenv = True
+    should_transfer_files = YES
+    when_to_transfer_output = ON_EXIT
+    log = $(JobBatchName).log
+    error = job_$(Process).stderr
+    output = job_$(Process).stdout
+    
+    transfer_input_files = singularity_test.sh, tmao.set.R
+    request_cpus= 1
+    request_memory= 3G
+    request_disk = 1G
+    accounting_group=group_genome.bio
+    ## 다운로드된 이미지의 절대결로를 넣어주세요.
+    +SingularityImage = "<절대경로>/bioconductor_docker_RELEASE_3_15.sif"
+    +SingularityBind = "/cvmfs, /cms, /bio, /epig, /share"
+    #notification = Error
+    #notify_user =
+    
+    queue 1
+    ```
+    {% endcode %}
+    {% code title="singularity_test.sh" %}
+    ```bash
+    #!/bin/bash
+    /usr/local/bin/Rscript tmao.set.R
+    ```
+    {% endcode %}
+    1.  HTCondor로 작업을 제출한 후 기다려봅니다.
     ```bash
     condor_submit submit_singularity.jdl
     ```
