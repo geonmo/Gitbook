@@ -41,6 +41,7 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
     Rscript package_install.R
     ```
 5. 패키지 설치를 홈디렉토리로 지정을 하였다면 모든 WN에서 접근이 가능합니다. 해당 Singularity 실행환경을 위해 아래와 같이 condor 제출파일과 bash 스크립트 파일을 작성합니다.
+
     {% code title="submit_singularity.jdl" %}
     ```
     JobBatchName = BioCondctor_Package_Installation_Test_$(Cluster)
@@ -74,7 +75,8 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
     /usr/local/bin/Rscript tmao.set.R
     ```
     {% endcode %}
-    1.  HTCondor로 작업을 제출한 후 기다려봅니다.
+6.  HTCondor로 작업을 제출한 후 기다려봅니다.
+    
     ```bash
     condor_submit submit_singularity.jdl
     ```
