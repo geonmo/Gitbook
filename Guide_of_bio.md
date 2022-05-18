@@ -19,7 +19,8 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
     ```
 2.  이후 패키지 설치를 위한 R파일을 작성합니다. 작성 후 이미지로 접속을 합니다.
 
-    {% code title="package_install.R" %}
+    In `package_install.R`,
+    
     ```bash
     ## 컨테이너 내부에 쓰기가 불가능하기 때문에 라이브러리를 저장할 디렉토리를 지정해야 합니다.
     lib_path <-"/share/geonmo/TOOLS/Rlibrary_singularity"
@@ -28,7 +29,7 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
         install.packages("BiocManager", lib=lib_path)
     BiocManager::install("Maaslin2",quietly=TRUE, lib=lib_path)
     ```
-    {% endcode %}
+    
 3.  전송된 이미지 파일은 아래 명령어로 접속하여 확인이 가능합니다.
 
     ```bash
