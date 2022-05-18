@@ -76,10 +76,9 @@ Docker와 유사한 프로그램인 Singularity를 이용하여 자신만의 Bio
     /usr/local/bin/Rscript tmao.set.R
     ```
 
-6\. HTCondor로 작업을 제출한 후 기다려봅니다.
+6. HTCondor로 작업을 제출한 후 기다려봅니다.
 
-````
-```bash
-condor_submit submit_singularity.jdl
-```
-````
+    ```bash
+    condor_submit submit_singularity.jdl
+    ```
+
