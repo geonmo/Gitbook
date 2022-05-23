@@ -1,4 +1,4 @@
-# KISTI GSDC 유전체 팜
+# KISTI GSDC 유전체 팜 소개
 
 ## 유전체 팜 사용자 정보 제공
 
