@@ -44,15 +44,16 @@ UI 서버는 많은 사용자들이 같이 이용하는 서버입니다. 따라�
 ### 작업 확인(condor_q)
 * 제출된 작업의 상태 및 실행 여부를 확인할 수 있는 명령어입니다.
 1. condor_q 명령어로 본인의 작업 정보를 확인 가능합니다.
-    ```bash
-   [geonmo@bio-ui7 ~]$ condor_q
-   -- Schedd: bio-ui7.sdfarm.kr : <134.75.127.179:9618?... @ 05/30/22 18:44:33
-   OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
-   
-   Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-   Total for geonmo: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-   Total for all users: 95 jobs; 0 completed, 0 removed, 31 idle, 62 running, 2 held, 0 suspended
-    ```
+   ```bash
+   condor_q
+   ````
+   > -- Schedd: bio-ui7.sdfarm.kr : <134.75.127.179:9618?... @ 05/30/22 18:44:33
+   > 
+   > OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+   > 
+   > Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended\
+   > Total for geonmo: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended\
+   > Total for all users: 95 jobs; 0 completed, 0 removed, 31 idle, 62 running, 2 held, 0 suspended
    * -allusers(-all) 옵션으로 다른 사용자의 작업을 확인할 수 있습니다.
    * -global 옵션으로 다른 그룹의 작업을 확인할 수 있습니다. 
    * -long(-l) 옵션으로 특정 작업의 자세한 ClassAds 정보를 확인할 수 있습니다.
