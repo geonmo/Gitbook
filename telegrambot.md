@@ -9,5 +9,5 @@
 5. GSDC 컴퓨팅 계정명을 입력합니다.
 6. 가입때 등록하였던 이메일 주소를 입력합니다.
 7. 해당 이메일로 전송된 OTP 코드를 입력해줍니다.
-   1. "Please, enter the OTP code to proceed." 창이 나타나지 않으면 봇에 문제가 있는 것이므로 [gsdc-support@kisti.re.kr](mailto:gsdc-support@kisti.re.kr)로 연락 주시기 바랍니다.
+   1. "Please, enter the OTP code to proceed." 메시지가 표시되지 않으면 봇에 문제가 있는 것이므로 [gsdc-support@kisti.re.kr](mailto:gsdc-support@kisti.re.kr?Subject=[BIO])로 연락 주시기 바랍니다.
 8. OTP 코드를 입력하면 패스워드가 리셋되고 임시 패스워드가 이메일로 전송됩니다.
