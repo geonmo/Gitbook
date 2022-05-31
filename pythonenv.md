@@ -5,51 +5,51 @@
 
 ### 초기 환경 구축
 1. 신규 디렉토리 생성
-```bash
-mkdir pipenv_test01
-```
+    ```bash
+    mkdir pipenv_test01
+    ```
 2. pipenv로 python 3.7 세팅
-```bash
-pipenv --python 3.7
-```
->Creating a virtualenv for this project...\
-Pipfile: /share/geonmo/01management/condor_check/pipenv_test01/Pipfile\
-Using /share/geonmo/.pyenv/versions/3.7.13/bin/python3.7m (3.7.13) to create virtualenv...                                                                    
-⠏ Creating virtual environment...created virtual environment CPython3.7.13.final.0-64 in 15781ms                                                              
-creator CPython3Posix(dest=/share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu, clear=False, no_vcs_ignore=False, global=False)              
-seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/share/geonmo/.local/share/virtualenv)               
-added seed packages: pip==22.0.4, setuptools==62.1.0, wheel==0.37.1
-activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator\
-✔ Successfully created virtual environment!
-Virtualenv location: /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu                                                                          
-Creating a Pipfile for this project...
+    ```bash
+    pipenv --python 3.7
+    ```
+    >Creating a virtualenv for this project...\
+    Pipfile: /share/geonmo/01management/condor_check/pipenv_test01/Pipfile\
+    Using /share/geonmo/.pyenv/versions/3.7.13/bin/python3.7m (3.7.13) to create virtualenv...                                                                    
+    ⠏ Creating virtual environment...created virtual environment CPython3.7.13.final.0-64 in 15781ms                                                              
+    creator CPython3Posix(dest=/share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu, clear=False, no_vcs_ignore=False, global=False)              
+    seeder FromAppData(download=False, pip=bundle, setuptools=bundle, wheel=bundle, via=copy, app_data_dir=/share/geonmo/.local/share/virtualenv)               
+    added seed packages: pip==22.0.4, setuptools==62.1.0, wheel==0.37.1
+    activators BashActivator,CShellActivator,FishActivator,NushellActivator,PowerShellActivator,PythonActivator\
+    ✔ Successfully created virtual environment!
+    Virtualenv location: /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu                                                                          
+    Creating a Pipfile for this project...
 3. pipenv로 패키지 설치
-```bash
-#pipenv install <Package>
-pipenv install numpy
-```
->Installing numpy...\
-Adding numpy to Pipfile's [packages]...\
-✔ Installation Succeeded\
-Pipfile.lock not found, creating...\
-Locking [dev-packages] dependencies...\
-Locking [packages] dependencies...\
-Building requirements...\
-Resolving dependencies...\
-✔ Success!\
-Updated Pipfile.lock (2cfc5e)!\
-Installing dependencies from Pipfile.lock (2cfc5e)...\
-🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0  00:00:00\
-To activate this project's virtualenv, run pipenv shell.\
-Alternatively, run a command inside the virtualenv with pipenv run.
+    ```bash
+    #pipenv install <Package>
+    pipenv install numpy
+    ```
+    >Installing numpy...\
+    Adding numpy to Pipfile's [packages]...\
+    ✔ Installation Succeeded\
+    Pipfile.lock not found, creating...\
+    Locking [dev-packages] dependencies...\
+    Locking [packages] dependencies...\
+    Building requirements...\
+    Resolving dependencies...\
+    ✔ Success!\
+    Updated Pipfile.lock (2cfc5e)!\
+    Installing dependencies from Pipfile.lock (2cfc5e)...\
+    🐍   ▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉▉ 0/0  00:00:00\
+    To activate this project's virtualenv, run pipenv shell.\
+    Alternatively, run a command inside the virtualenv with pipenv run.
 4. pipenv shell로 해당 환경 접속
-```bash
-pipenv shell 
-```
->Launching subshell in virtual environment...\
-. /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu/bin/activate\
-[geonmo@bio-ui7 pipenv_test01]$  . /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu/bin/activate\
-(pipenv_test01) [geonmo@bio-ui7 pipenv_test01]$ pip freeze\
-numpy==1.21.6\
-(pipenv_test01) [geonmo@bio-ui7 pipenv_test01]$ python --version
-Python 3.7.13\
+    ```bash
+    pipenv shell 
+    ```
+    >Launching subshell in virtual environment...\
+    . /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu/bin/activate\
+    [geonmo@bio-ui7 pipenv_test01]$  . /share/geonmo/.local/share/virtualenvs/pipenv_test01-rTDE4siu/bin/activate\
+    (pipenv_test01) [geonmo@bio-ui7 pipenv_test01]$ pip freeze\
+    numpy==1.21.6\
+    (pipenv_test01) [geonmo@bio-ui7 pipenv_test01]$ python --version
+    Python 3.7.13\
