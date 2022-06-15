@@ -140,8 +140,11 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     #transfer_output_files =
     
     accounting_group=group_genome.bio
-    +SingularityImage = "/share/geonmo/deepvariant_1.4.0.sif"
-    +SingularityBind = "/cvmfs, /share, /bio, /epig"
+    #+SingularityImage = "/share/geonmo/deepvariant_1.4.0.sif"
+    #+SingularityBind = "/bio, /epig"
+    +SingularityImage = "<DIRECTORY>/deepvariant_1.4.0.sif"
+    +SingularityBind = "/bio"
+    
     
     notification = Error
     #notify_user = <YOUR EMAIL ADDRESS>
