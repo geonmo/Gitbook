@@ -21,6 +21,7 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    ```
 
    > [geonmo@bio-ui7 ~]$ ls -lh deepvariant_1.4.0.sif 
+   >
    > -rwxr-x---. 1 geonmo geonmo 2.1G Jun 15 14:43 deepvariant_1.4.0.sif
 
 2. 컨테이너에 접속하여 작업이 원하는대로 수행되는지 확인합니다.
@@ -58,53 +59,91 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    ```
 
    > Singularity> cat /etc/lsb-release 
+   >
    > DISTRIB_ID=Ubuntu
+   >
    > DISTRIB_RELEASE=20.04
+   >
    > DISTRIB_CODENAME=focal
+   >
    > DISTRIB_DESCRIPTION="Ubuntu 20.04.4 LTS"
    >
+   > 
+   >
    > Singularity> cat > tf_test.py
+   >
    > import tensorflow as tf
+   >
    > mnist = tf.keras.datasets.mnist
    >
+   > 
+   >
    > (x_train, y_train), (x_test, y_test) = mnist.load_data()
+   >
    > x_train, x_test = x_train / 255.0, x_test / 255.0
+   >
    > model = tf.keras.models.Sequential([
+   >
    >   tf.keras.layers.Flatten(input_shape=(28, 28)),
+   >
    >   tf.keras.layers.Dense(128, activation='relu'),
+   >
    >   tf.keras.layers.Dropout(0.2),
+   >
    >   tf.keras.layers.Dense(10, activation='softmax')
+   >
    > ])
    >
+   > 
+   >
    > model.compile(optimizer='adam',
-   >               loss='sparse_categorical_crossentropy',
-   >               metrics=['accuracy'])
+   >
+   > ​              loss='sparse_categorical_crossentropy',
+   >
+   > ​              metrics=['accuracy'])
+   >
    > model.fit(x_train, y_train, epochs=5)
    >
+   > 
+   >
    > model.evaluate(x_test,  y_test, verbose=2)
+   >
    > ^C
+   >
    > Singularity> python tf_test.py
-   > 2022-06-15 14:57:32.959817: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA                                                                    
-   > To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.                                                                   
+   >
+   > 2022-06-15 14:57:32.959817: I tensorflow/core/platform/cpu_feature_guard.cc:151] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA              
+   >
+   >
+   > To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.        
+   >
    > 2022-06-15 14:57:32.964689: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+   >
    > Epoch 1/5
-   > 1875/1875 [==============================] - 24s 13ms/step - loss: 0.2973 - accuracy: 0.9125                                                                  
+   > 1875/1875 [==============================] - 24s 13ms/step - loss: 0.2973 - accuracy: 0.9125      
+   >
    > Epoch 2/5
-   > 1875/1875 [==============================] - 18s 10ms/step - loss: 0.1389 - accuracy: 0.9578                                                                  
+   > 1875/1875 [==============================] - 18s 10ms/step - loss: 0.1389 - accuracy: 0.9578   
+   >
    > Epoch 3/5
-   > 1875/1875 [==============================] - 20s 11ms/step - loss: 0.1064 - accuracy: 0.9674                                                                  
+   > 1875/1875 [==============================] - 20s 11ms/step - loss: 0.1064 - accuracy: 0.9674   
+   >
    > Epoch 4/5
-   > 1875/1875 [==============================] - 22s 12ms/step - loss: 0.0874 - accuracy: 0.9727                                                                  
+   > 1875/1875 [==============================] - 22s 12ms/step - loss: 0.0874 - accuracy: 0.9727
+   >
    > Epoch 5/5
-   > 1875/1875 [==============================] - 21s 11ms/step - loss: 0.0746 - accuracy: 0.9772                                                                  
+   > 1875/1875 [==============================] - 21s 11ms/step - loss: 0.0746 - accuracy: 0.9772   
+   >
+   > ​                                                               
+   >
    > 313/313 - 1s - loss: 0.0748 - accuracy: 0.9764 - 1s/epoch - 5ms/step
 
 3. 작업 제출 명세파일을 작성합니다. 
    on `submit_bio_singularity.sub`,
 
    ```bash
-   JobBatchName            = BIO_Singularity_$(Cluster)
-   executable = singularity_test.sh
+   JobBatchName  = BIO_Singularity_$(Cluster)
+   executable = bio_singularity_test.sh
    universe   = vanilla
    requirements = ( HasSingularity == true )
    getenv     = True
@@ -114,7 +153,7 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    error = job_$(Process).err
    log = job_$(Process).log
    
-   transfer_input_files = bio_singularity_test.sh, tf_test.py
+   transfer_input_files = tf_test.py
    #transfer_output_files =
    
    accounting_group=group_genome.bio
@@ -127,7 +166,9 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    queue 1
    ```
 
-4.  실행 파일을 작성합니다. on `bio_singularity_test.sh`, 
+4.  실행 파일을 작성합니다. 
+   on `bio_singularity_test.sh`, 
+
    ``` bash
    #!/bin/bash
    
