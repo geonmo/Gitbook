@@ -1,4 +1,4 @@
-# Singularity 사용방법 안내
+# Singularity를 이용한 환경설정
 
 singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니다.
 
@@ -183,6 +183,4 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    ```bash
    condor_submit submit_bio_singularity.sub
    ```
-
-   
 
