@@ -127,10 +127,8 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
    queue 1
    ```
 
-4.  실행 파일을 작성합니다.
-   on `bio_singularity_test.sh`,
-
-   ```bash
+4.  실행 파일을 작성합니다. on `bio_singularity_test.sh`, 
+   ``` bash
    #!/bin/bash
    
    echo $(hostname)
