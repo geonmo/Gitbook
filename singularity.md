@@ -35,7 +35,7 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     cat > tf_test.py
     import tensorflow as tf
     mnist = tf.keras.datasets.mnist
-
+    
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train, x_test = x_train / 255.0, x_test / 255.0
     model = tf.keras.models.Sequential([
@@ -44,12 +44,12 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
       tf.keras.layers.Dropout(0.2),
       tf.keras.layers.Dense(10, activation='softmax')
     ])
-
+    
     model.compile(optimizer='adam',
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
     model.fit(x_train, y_train, epochs=5)
-
+    
     model.evaluate(x_test,  y_test, verbose=2)
     ## \^C
     ## 컨트롤 + c
@@ -91,9 +91,9 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     >
     > model.compile(optimizer='adam',
     >
-    > ​ loss='sparse\_categorical\_crossentropy',
+    >  loss='sparse\_categorical\_crossentropy',
     >
-    > ​ metrics=\['accuracy'])
+    >  metrics=\['accuracy'])
     >
     > model.fit(x\_train, y\_train, epochs=5)
     >
@@ -119,7 +119,7 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     >
     > Epoch 5/5 1875/1875 \[==============================] - 21s 11ms/step - loss: 0.0746 - accuracy: 0.9772
     >
-    > ​
+    > 
     >
     > 313/313 - 1s - loss: 0.0748 - accuracy: 0.9764 - 1s/epoch - 5ms/step
 3.  작업 제출 명세파일을 작성합니다. on `submit_bio_singularity.sub`,
@@ -135,17 +135,17 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     output = job_$(Process).out
     error = job_$(Process).err
     log = job_$(Process).log
-
+    
     transfer_input_files = tf_test.py
     #transfer_output_files =
-
+    
     accounting_group=group_genome.bio
     +SingularityImage = "/share/geonmo/deepvariant_1.4.0.sif"
     +SingularityBind = "/cvmfs, /share, /bio, /epig"
-
+    
     notification = Error
     #notify_user = <YOUR EMAIL ADDRESS>
-
+    
     queue 1
     ```
 4.  실행 파일을 작성합니다. on `bio_singularity_test.sh`,
@@ -154,8 +154,18 @@ singularity를 이용한 환경을 구축하는 방법에 대한 안내드립니
     #!/bin/bash
     echo $(hostname)
     cat /etc/lsb-release
-
+    
     python tf_test.py
     ```
-5. condor 작업을 제출합니다. \
-   `condor_submit submit_bio_singularity.sub`
+5. condor 작업을 제출합니다. 
+   
+   ```bash
+   condor_submit submit_bio_singularity.sub
+   ```
+   
+6. 
+
+
+
+
+
