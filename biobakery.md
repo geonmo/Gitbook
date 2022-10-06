@@ -14,8 +14,8 @@
 2. workspace 디렉토리 생성 및 이동
 
    ```bash
-   mkdir mpa
-   cd mpa
+   mkdir $HOME/mpa
+   cd $HOME/mpa
    ```
 
 3. pipenv 환경설정 및 metaphlan,humann 패키지 설치
@@ -45,3 +45,5 @@
 
 * metaphlan의 경우, ```--bowtie2db``` 옵션으로 DB 위치 지정이 가능합니다. 
   ```DEFAULT_DB_FOLDER``` 환경변수가 작동하지 않는다면 해당 옵션으로 DB 디렉토리 지정이 필요합니다.
+* DB를 /bio 디렉토리에 지정하면 DB 업데이트를 1번만 해도 되기 때문에 용량 문제가 발생하지 않습니다. 
+  * 현재 최신 metaphlan의 경우 DB 파일이 50GB가 넘어가기 때문에 되도록 다른 application 사용시에도 DB 디렉토리를 되도록 /bio로 해서 사용해주시기를 요청드립니다. 
