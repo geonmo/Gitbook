@@ -37,8 +37,11 @@
 * HTCondor Exectable 용 bash script에 다음 내용 포함
   ```bash
   cd $HOME/mpa
-  #pipenv run [실행할 명령어]
+  #pipenv run [실행할 명령어] 혹은 pipenv shell로 접속 후 실행
   pipenv run metaphlan ~~~~
   ```
 
-  
+## 참고사항
+
+* metaphlan의 경우, ```--bowtie2db``` 옵션으로 DB 위치 지정이 가능합니다. 
+  ```DEFAULT_DB_FOLDER``` 환경변수가 작동하지 않는다면 해당 옵션으로 DB 디렉토리 지정이 필요합니다.
